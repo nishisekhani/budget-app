@@ -1,5 +1,5 @@
-budgetFeedback = document.querySelector(".budget-feedback");
-expenseFeedback = document.querySelector(".expense-feedback");
+budgetFeedback = document.getElementById(".budget-feedback");
+expenseFeedback = document.getElementById("expense-feedback");
 budgetForm = document.getElementById("budget-form");
 budgetInput = document.getElementById("budget-input");
 budgetAmount = document.getElementById("budget-amount");
@@ -13,8 +13,7 @@ expenseList = document.getElementById("expense-list");
 itemList = [];
 itemID = 0;
 
-function submitBudgetForm(e){
-    
+function submitBudgetForm(){
     const value = budgetInput.value;
     
     if(value == "" || value < 0){
@@ -31,7 +30,6 @@ function submitBudgetForm(e){
 }
 
 function submitExpenseForm(){
-    
     const expenseValue = expenseInput.value;
     const amountValue = amountInput.value;
    
@@ -55,24 +53,18 @@ function submitExpenseForm(){
         }
         itemID++;
         itemList.push(expense);
-        //addExpense(expense);
+        // addExpense(expense);
         console.log(itemList);
     }
 }
 
-function eventListeners(){
-
-    budgetForm.addEventListener("submit", function(event) {
+budgetForm.addEventListener("submit", function(event) {
+        event.preventDefault();
         submitBudgetForm();
-    });
-    
-    expenseForm.addEventListener("submit", function(event) {
-        submitExpenseForm();
-
-    });
-    
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-    eventListeners();
 });
+    
+expenseForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        submitExpenseForm();
+});
+    
