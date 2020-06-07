@@ -1,4 +1,4 @@
-budgetFeedback = document.getElementById(".budget-feedback");
+budgetFeedback = document.getElementById("budget-feedback");
 expenseFeedback = document.getElementById("expense-feedback");
 budgetForm = document.getElementById("budget-form");
 budgetInput = document.getElementById("budget-input");
@@ -117,7 +117,6 @@ function addExpense(expenseListItems){
 }
 
 function editExpense(element){
-    
     let id = parseInt(element.dataset.id);
     const expenseTitle = itemList[id].title;
     const expenseAMount = parseInt(itemList[id].amount);
@@ -158,6 +157,7 @@ expenseForm.addEventListener("submit", function(event) {
 });
 
 expenseList.addEventListener("click", function(event){
+    console.log(event.target.parentElement);
     if(event.target.parentElement.classList.contains('edit-icon')){
             editExpense(event.target.parentElement);
     }
